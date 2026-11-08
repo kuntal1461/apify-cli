@@ -95,11 +95,19 @@ All development must follow this workflow:
 
 ## 2. Mandatory Task Directory
 
-For every new development task, create:
+The `tasks/` directory has two levels:
 
 ```text
 tasks/
-└── <TASK-ID>-<task-name>/
+├── instructions/                        ← template files (committed in master, never modified)
+│   ├── task.md
+│   ├── existing-implementation.md
+│   ├── requirements.md
+│   ├── implementation-plan.md
+│   ├── impact-analysis.md
+│   ├── milestone.md
+│   └── test-cases.md
+└── <TASK-ID>-<task-name>/               ← created on the dev branch when a task is assigned
     ├── task.md
     ├── existing-implementation.md
     ├── requirements.md
@@ -108,6 +116,10 @@ tasks/
     ├── milestone.md
     └── test-cases.md
 ```
+
+- `tasks/instructions/` holds the blank template files. These live in `master` and are never filled with implementation content.
+- When a task is assigned, create the dev branch and copy the templates into `tasks/<TASK-ID>-<task-name>/`. Fill them in there.
+- Task folders (`tasks/<TASK-ID>-*/`) must never appear in master or in upstream PRs.
 
 These files must be maintained throughout development.
 
