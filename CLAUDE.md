@@ -66,7 +66,12 @@ Follow these steps:
 
 6. **Define Test Cases:** Document positive, negative, boundary, and regression scenarios in `test-cases.md`.
 
-7. **Implement Changes:** Start coding only after completing the initial analysis and implementation plan. Follow the existing project conventions and keep code changes tight to the task scope.
+> **STRICT GATE — NO CODE BEFORE APPROVAL:**
+> After completing steps 1–6, present the implementation plan to the user and **wait for explicit approval**.
+> Do NOT write, edit, or delete any source code until the user has reviewed the plan and said "approved", "go ahead", "looks good", or equivalent.
+> This rule is non-negotiable. If you start coding before receiving approval you are violating this workflow.
+
+7. **Implement Changes:** Start coding only after the user has explicitly approved the implementation plan. Follow the existing project conventions and keep code changes tight to the task scope.
 
 8. **Update Documentation:** After implementation, update the Markdown files to reflect the actual changes, testing results, and any deviations from the original plan.
 
