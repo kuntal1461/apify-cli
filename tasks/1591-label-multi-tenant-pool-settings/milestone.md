@@ -3,7 +3,7 @@
 **Task ID:** github-1591  
 **Task Name:** Label multi-tenant pool settings (S1)  
 **GitHub Issue:** #1591  
-**Current Status:** Testing complete — ready for PR branch preparation
+**Current Status:** Complete internally — upstream PR not opened (superseded by maintainer PR #1593)
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -49,7 +49,7 @@
 - [x] Verify acceptance criteria
 - [x] Update implementation documentation
 - [x] Record final changes
-- [ ] Mark task as completed (after upstream PR)
+- [x] Mark task as completed (no upstream PR: maintainer PR #1593 covers S1 + S2)
 
 **Status:** Complete
 
@@ -65,7 +65,7 @@
 
 ## Blockers
 
-- None. Upstream PR not yet created (needs user go-ahead).
+- None. Not-yet-upstreamed finding: #1593 still compares owner usernames case-sensitively (see D6).
 
 ## Change Log
 
@@ -77,3 +77,4 @@
 | 2026-11-17 | M3 | Implemented `getPoolOwner`, pool header, JSON `pool` key; added case-insensitive owner check (D6) |
 | 2026-11-17 | M4 | Unit + live tests pass; full-suite failures confirmed pre-existing |
 | 2026-11-17 | M5 | Security + maintainer review done (removed real username from code comment/tests); ACs verified |
+| 2026-11-17 | Closure | Found maintainer draft PR #1593 (S1 + S2). Decided not to open a duplicate PR. Case-insensitive owner check (D6) is not in #1593 |

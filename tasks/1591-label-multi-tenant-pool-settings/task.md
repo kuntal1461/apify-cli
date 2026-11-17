@@ -4,7 +4,7 @@
 **Task ID:** github-1591  
 **Task Name:** Label multi-tenant pool settings  
 **Branch:** dev/1591-label-multi-tenant-pool-settings  
-**Status:** Implemented — ready for PR branch  
+**Status:** Complete internally — superseded upstream by PR #1593  
 **Created:** 2026-11-17
 
 ## Summary
