@@ -3,7 +3,7 @@
 **Task ID:** github-1566  
 **Task Name:** No empty environmentVariables in actor.json  
 **GitHub Issue:** #1566  
-**Current Status:** Awaiting plan approval
+**Current Status:** Testing — API tests pending
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -23,25 +23,25 @@
 - [x] Document edge cases
 - [x] Complete technical documentation
 
-**Status:** Complete — awaiting user approval
+**Status:** Complete (approved 2026-11-17)
 
 ## Milestone 3: Development
 
-- [ ] Implement required changes
-- [ ] Follow existing coding standards
-- [ ] Review code for quality issues
+- [x] Implement required changes
+- [x] Follow existing coding standards
+- [x] Review code for quality issues
 
-**Status:** Not Started
+**Status:** Complete
 
 ## Milestone 4: Testing
 
-- [ ] Perform unit testing
-- [ ] Verify positive scenarios
-- [ ] Verify negative scenarios
-- [ ] Perform regression testing
-- [ ] Resolve identified defects
+- [x] Perform unit testing
+- [ ] Verify positive scenarios (API tests P2/P3 pending)
+- [x] Verify negative scenarios
+- [x] Perform regression testing (local suite)
+- [x] Resolve identified defects
 
-**Status:** Not Started
+**Status:** In Progress — API tests need `TEST_USER_TOKEN`
 
 ## Milestone 5: Review & Completion
 
@@ -58,14 +58,14 @@
 | Milestone | Status |
 |---|---|
 | Existing Implementation Analysis | Complete |
-| Requirements & Technical Design | Complete (awaiting approval) |
-| Development | Not Started |
-| Testing | Not Started |
+| Requirements & Technical Design | Complete |
+| Development | Complete |
+| Testing | In Progress (API pending) |
 | Review & Completion | Not Started |
 
 ## Blockers
 
-- Waiting for plan approval (strict gate in CLAUDE.md).
+- `pnpm run test:api` for push can't run locally without `TEST_USER_TOKEN`.
 
 ## Change Log
 
@@ -73,3 +73,6 @@
 |---|---|---|
 | 2026-11-17 | Initialization | Branch `dev/1566-no-empty-environment-variables` created from master; task docs written |
 | 2026-11-17 | M1–M2 | Analysis, requirements, plan, impact, test cases complete |
+| 2026-11-17 | M2 | Plan approved by user |
+| 2026-11-17 | M3 | consts.ts, push.ts, create.ts changed; tests added/updated |
+| 2026-11-17 | M4 | lint/format/build pass; test:local pass except pre-existing python_support failure; API tests pending |

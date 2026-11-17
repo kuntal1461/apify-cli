@@ -1,7 +1,7 @@
 # Implementation Plan
 
 **Task:** GitHub Issue #1566 — Stop writing an empty `environmentVariables` to `actor.json`  
-**Status:** Awaiting approval
+**Status:** Approved 2026-11-17 — implemented
 
 ## Proposed Solution
 
@@ -65,6 +65,11 @@ No docs regeneration needed (no flag/description changes).
 6. Update task docs + milestone, commit on dev branch.
 7. Clean PR branch from `upstream/master`, transfer only source/test changes, validate diff excludes `CLAUDE.md` and `tasks/**`.
 
+## Deviations from Plan
+
+- The init→push API test went in as a separate test (not folded in). `init` skips when `actor.json` exists, so the test deletes the template's `actor.json`, runs `InitCommand`, pushes, then restores the original file in `finally`.
+- `init.test.ts`: added the `not.toHaveProperty('environmentVariables')` assertion to the existing "without dockerfile" test rather than a new test.
+
 ## Design Decisions
 
 - **Guard in push, not only in the template.** Fixing the template alone would leave every existing project still wiping env vars. The guard fixes existing projects with no user action.
@@ -77,4 +82,4 @@ No docs regeneration needed (no flag/description changes).
 - [x] Existing implementation analysis complete
 - [x] All files to change identified
 - [x] Implementation sequence confirmed
-- [ ] Ready to start coding (awaiting user approval)
+- [x] Ready to start coding (approved 2026-11-17)

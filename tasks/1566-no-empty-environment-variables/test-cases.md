@@ -1,7 +1,19 @@
 # Test Cases
 
 **Task:** GitHub Issue #1566 — Stop writing an empty `environmentVariables` to `actor.json`  
-**Status:** Defined — not yet executed
+**Status:** Local executed; API pending
+
+## Execution Results (2026-11-17)
+
+| Check | Result |
+|---|---|
+| `pnpm run lint` (type-aware) | Pass |
+| `pnpm run format` | Pass |
+| `pnpm run build` | Pass |
+| `pnpm run test:local` | 1163 passed, 1 failed, 6 skipped. The failure is `test/local/__fixtures__/python_support.test.ts` (`.venv` not created); it fails identically with the changes stashed, so it's an environment issue unrelated to this task |
+| `pnpm run test:api` (push) | **Not run**: `TEST_USER_TOKEN` not set locally. Covers P2, P3, P4, B1, R4 |
+
+P1 covered by `init.test.ts`; R1–R3 pass. B2/B3 follow from the `Object.keys(...).length > 0` guard (no dedicated test).
 
 ## Positive Scenarios
 
