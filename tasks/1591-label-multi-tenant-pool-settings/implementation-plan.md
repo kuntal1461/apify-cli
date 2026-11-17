@@ -70,4 +70,14 @@ JSON output.
 - [x] Existing implementation analysis complete
 - [x] All files to change identified
 - [x] Implementation sequence confirmed
-- [ ] Ready to start coding — **waiting for user approval**
+- [x] Ready to start coding — approved by user 2026-11-17
+
+## Implementation Result (2026-11-17)
+
+Implemented as planned. Plan approved by user before coding.
+
+**Deviation D6 — case-insensitive owner check.** Live testing showed `GET /v2/users/me` returns the username as
+registered (mixed case) while `GET /v2/acts/:id` returns the owner in lowercase. With `===`, an owner whose username
+has uppercase letters would see `Pool (developer's account):` on their own Actor (breaks AC2). The same bug existed
+in `describeTenancy` from #1522. Fix: one private `isActorOwner()` helper (lowercase comparison) used by both
+`describeTenancy` and `getPoolOwner`, so the two lines can't disagree.

@@ -57,3 +57,23 @@ Endpoints:      3 documented (apify server endpoints apify/rag-web-browser)
 - AC5. `-` placeholders for missing settings still render inside the pool block.
 - AC6. Unit tests cover the new helper for single-tenant, owner, non-owner and unknown viewer.
 - AC7. `pnpm run lint && pnpm run format && pnpm run build && pnpm run test:local` pass.
+
+## Acceptance Criteria Verification (2026-11-17)
+
+| AC | Status | Notes |
+|---|---|---|
+| AC1 | ✅ | Verified live |
+| AC2 | ✅ | Unit-tested (no owned multi-tenant Actor available); mixed-case usernames fixed (D6) |
+| AC3 | ✅ | Verified live |
+| AC4 | ✅ | Verified live, existing keys unchanged |
+| AC5 | ✅ | Placeholders preserved |
+| AC6 | ✅ | 5 new unit tests |
+| AC7 | ✅ | lint/format/build green; remaining `test:local` failures are pre-existing |
+
+| BR | Met? |
+|---|---|
+| BR1 caller can't misread pool settings as their own | ✅ |
+| BR2 nothing hidden | ✅ |
+| BR3 owner sees it's their pool | ✅ (incl. case fix) |
+| BR4 JSON carries the same fact, no keys dropped | ✅ |
+| BR5 single-tenant unchanged | ✅ |

@@ -81,11 +81,28 @@ export function describeTenancy(
 		return `single-tenant (runs in your account "${viewerUsername}", which pays the platform usage)`;
 	}
 
-	if (viewerUsername === actor.ownerUsername) {
+	if (isActorOwner(actor, viewerUsername)) {
 		return 'multi-tenant (runs in your account; your own requests pay the platform usage, never events)';
 	}
 
 	return `multi-tenant (runs in "${actor.ownerUsername}"'s account; ${describeCallerCost(actor.pricingModel)})`;
+}
+
+/** Whose pool the settings of a multi-tenant Actor describe; a single-tenant Actor's settings are the caller's own. */
+export function getPoolOwner(
+	actor: Pick<ServerActor, 'tenancy' | 'ownerUsername'>,
+	viewerUsername: string | undefined,
+): 'yours' | 'developer' | undefined {
+	if (!isMultiTenant(actor)) {
+		return undefined;
+	}
+
+	return isActorOwner(actor, viewerUsername) ? 'yours' : 'developer';
+}
+
+// The API returns the viewer's username as registered ("Jane.Doe") but the Actor's owner in lowercase.
+function isActorOwner(actor: Pick<ServerActor, 'ownerUsername'>, viewerUsername: string | undefined): boolean {
+	return viewerUsername !== undefined && viewerUsername.toLowerCase() === actor.ownerUsername.toLowerCase();
 }
 
 function describeCallerCost(pricingModel: string | undefined): string {

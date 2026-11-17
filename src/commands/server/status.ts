@@ -5,6 +5,7 @@ import { Args } from '../../lib/command-framework/args.js';
 import { simpleLog } from '../../lib/outputs.js';
 import {
 	describeTenancy,
+	getPoolOwner,
 	getServerDefinition,
 	isMultiTenant,
 	listServerOperations,
@@ -53,6 +54,7 @@ export class ServerStatusCommand extends ApifyCommand<typeof ServerStatusCommand
 		const { standby } = actor;
 
 		const { username } = await getCurrentUserInfo();
+		const poolOwner = getPoolOwner(actor, username);
 
 		// A multi-tenant Actor runs in the developer's account, so the caller has no runs to list.
 		let runs: { id: string; startedAt: Date }[] | undefined;
@@ -69,6 +71,7 @@ export class ServerStatusCommand extends ApifyCommand<typeof ServerStatusCommand
 				url: actor.standbyUrl,
 				tenancy: actor.tenancy ?? null,
 				pricingModel: actor.pricingModel ?? null,
+				pool: poolOwner ? { account: poolOwner, ownerUsername: actor.ownerUsername } : null,
 				build: { ref: actor.buildRef, id: build.id, buildNumber: build.buildNumber },
 				memoryMbytes: standby.memoryMbytes ?? null,
 				idleTimeoutSecs: standby.idleTimeoutSecs ?? null,
@@ -88,13 +91,21 @@ export class ServerStatusCommand extends ApifyCommand<typeof ServerStatusCommand
 				? `${operations.length} documented (apify server endpoints ${actor.userFriendlyId})`
 				: 'not documented (see the Actor README)';
 
+		// Under the pool header the labels shrink by the indent, so the values stay in the same column.
+		const indent = poolOwner ? '  ' : '';
+		const settingLine = (label: string, value: string) => `${indent}${label.padEnd(16 - indent.length)}${value}`;
+
 		const lines = [
 			`URL:            ${actor.standbyUrl}`,
 			`Tenancy:        ${tenancyLine}`,
 			`Build:          ${actor.buildRef} (${build.buildNumber})`,
-			`Memory:         ${standby.memoryMbytes ?? '-'} MB`,
-			`Idle timeout:   ${standby.idleTimeoutSecs ?? '-'} s`,
-			`Requests/run:   ${standby.desiredRequestsPerActorRun ?? '-'} desired, ${standby.maxRequestsPerActorRun ?? '-'} max`,
+			...(poolOwner ? [`Pool (${poolOwner === 'yours' ? 'your' : "developer's"} account):`] : []),
+			settingLine('Memory:', `${standby.memoryMbytes ?? '-'} MB`),
+			settingLine('Idle timeout:', `${standby.idleTimeoutSecs ?? '-'} s`),
+			settingLine(
+				'Requests/run:',
+				`${standby.desiredRequestsPerActorRun ?? '-'} desired, ${standby.maxRequestsPerActorRun ?? '-'} max`,
+			),
 			`Endpoints:      ${endpointsLine}`,
 			...(webServerMcpPath ? [`MCP path:       ${webServerMcpPath}`] : []),
 		];

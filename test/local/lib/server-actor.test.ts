@@ -8,6 +8,7 @@ import {
 	describeServerError,
 	describeTenancy,
 	getEffectivePricingModel,
+	getPoolOwner,
 	getServerInterfaceHint,
 	listServerOperations,
 	parseServerRequestArgs,
@@ -240,6 +241,40 @@ describe('server-actor', () => {
 			const actor = serverActor({ tenancy: 'MULTI_TENANT' });
 
 			expect(describeTenancy(actor, 'caller')).toContain("it's free for you");
+		});
+	});
+
+	describe('getPoolOwner()', () => {
+		it("has no pool for a single-tenant Actor, whose settings are the caller's own", () => {
+			expect(getPoolOwner(serverActor(), 'caller')).toBeUndefined();
+			expect(getPoolOwner(serverActor({ tenancy: 'SINGLE_TENANT' }), 'apify')).toBeUndefined();
+		});
+
+		it('gives the owner of a multi-tenant Actor their own pool', () => {
+			expect(getPoolOwner(serverActor({ tenancy: 'MULTI_TENANT' }), 'apify')).toBe('yours');
+		});
+
+		it("gives anyone else the developer's pool", () => {
+			const actor = serverActor({ tenancy: 'MULTI_TENANT' });
+
+			expect(getPoolOwner(actor, 'caller')).toBe('developer');
+			expect(getPoolOwner(actor, undefined)).toBe('developer');
+		});
+
+		it('recognizes the owner whatever the casing of their username', () => {
+			const actor = serverActor({ tenancy: 'MULTI_TENANT', ownerUsername: 'jane.doe' });
+
+			expect(getPoolOwner(actor, 'Jane.Doe')).toBe('yours');
+			expect(describeTenancy(actor, 'Jane.Doe')).toContain('runs in your account');
+		});
+
+		it('agrees with describeTenancy() on who owns the pool', () => {
+			const actor = serverActor({ tenancy: 'MULTI_TENANT' });
+
+			for (const viewer of ['apify', 'Apify', 'caller', undefined]) {
+				const ownsPool = getPoolOwner(actor, viewer) === 'yours';
+				expect(describeTenancy(actor, viewer).includes('runs in your account')).toBe(ownsPool);
+			}
 		});
 	});
 	describe('shortenSummary()', () => {

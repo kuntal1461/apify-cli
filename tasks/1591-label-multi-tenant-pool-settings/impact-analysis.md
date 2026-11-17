@@ -34,3 +34,9 @@
   today. Proposal: accept, same as `Tenancy:`.
 - **Q3. Label wording.** `developer's account` (issue text) vs. the owner's name (`"apify"'s account`). Proposal:
   follow the issue.
+
+## Post-implementation notes (2026-11-17)
+
+- `describeTenancy` owner check is now case-insensitive (D6). For owners with mixed-case usernames, the `Tenancy:`
+  line changes from "runs in \"x\"'s account; you pay …" to "runs in your account; …" — a bug fix, not a regression.
+- Security review: no new inputs, network calls, or secret handling; `ownerUsername` was already printed. No findings.
