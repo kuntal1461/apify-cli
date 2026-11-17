@@ -65,7 +65,7 @@
 
 ## Blockers
 
-- None. Not-yet-upstreamed finding: #1593 still compares owner usernames case-sensitively (see D6).
+- None. Casing fix (D6) upstreamed separately as PR #1594.
 
 ## Change Log
 
@@ -78,3 +78,4 @@
 | 2026-11-17 | M4 | Unit + live tests pass; full-suite failures confirmed pre-existing |
 | 2026-11-17 | M5 | Security + maintainer review done (removed real username from code comment/tests); ACs verified |
 | 2026-11-17 | Closure | Found maintainer draft PR #1593 (S1 + S2). Decided not to open a duplicate PR. Case-insensitive owner check (D6) is not in #1593 |
+| 2026-11-17 | Upstream | Opened PR #1594 (branch `fix/server-owner-username-case`): case-insensitive `isActorOwner()` in `describeTenancy`, exported for reuse by #1593 |
