@@ -3,7 +3,7 @@
 **Task ID:** github-1566  
 **Task Name:** No empty environmentVariables in actor.json  
 **GitHub Issue:** #1566  
-**Current Status:** PR opened — API tests delegated to upstream CI
+**Current Status:** PR #1595 open — API tests delegated to upstream CI
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -77,3 +77,4 @@
 | 2026-11-17 | M3 | consts.ts, push.ts, create.ts changed; tests added/updated |
 | 2026-11-17 | M4 | lint/format/build pass; test:local pass except pre-existing python_support failure; API tests pending |
 | 2026-11-17 | M5 | User asked to open the PR without a local API run; clean branch `fix/1566-empty-environment-variables` created from upstream/master |
+| 2026-11-17 | M5 | Upstream PR #1595 opened from `fix/1566-empty-environment-variables` |

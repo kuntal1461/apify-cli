@@ -4,7 +4,7 @@
 **Task ID:** github-1566  
 **Task Name:** No empty environmentVariables in actor.json  
 **Branch:** dev/1566-no-empty-environment-variables  
-**Status:** Implemented — API tests pending (needs `TEST_USER_TOKEN`)  
+**Status:** PR open — https://github.com/apify/apify-cli/pull/1595  
 **Created:** 2026-11-17
 
 ## Summary
