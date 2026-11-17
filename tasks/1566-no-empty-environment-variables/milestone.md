@@ -3,7 +3,7 @@
 **Task ID:** github-1566  
 **Task Name:** No empty environmentVariables in actor.json  
 **GitHub Issue:** #1566  
-**Current Status:** Testing — API tests pending
+**Current Status:** PR opened — API tests delegated to upstream CI
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -41,17 +41,17 @@
 - [x] Perform regression testing (local suite)
 - [x] Resolve identified defects
 
-**Status:** In Progress — API tests need `TEST_USER_TOKEN`
+**Status:** Local complete; API tests (P2/P3) delegated to upstream CI by user decision
 
 ## Milestone 5: Review & Completion
 
-- [ ] Complete code review
-- [ ] Verify acceptance criteria
-- [ ] Update implementation documentation
-- [ ] Record final changes
+- [x] Complete code review
+- [ ] Verify acceptance criteria (pending API test run in CI)
+- [x] Update implementation documentation
+- [x] Record final changes
 - [ ] Mark task as completed
 
-**Status:** Not Started
+**Status:** In Progress — PR open
 
 ## Progress Summary
 
@@ -60,12 +60,12 @@
 | Existing Implementation Analysis | Complete |
 | Requirements & Technical Design | Complete |
 | Development | Complete |
-| Testing | In Progress (API pending) |
-| Review & Completion | Not Started |
+| Testing | Local complete; API via CI |
+| Review & Completion | In Progress (PR open) |
 
 ## Blockers
 
-- `pnpm run test:api` for push can't run locally without `TEST_USER_TOKEN`.
+- None. API tests run in upstream CI (no local `TEST_USER_TOKEN`).
 
 ## Change Log
 
@@ -76,3 +76,4 @@
 | 2026-11-17 | M2 | Plan approved by user |
 | 2026-11-17 | M3 | consts.ts, push.ts, create.ts changed; tests added/updated |
 | 2026-11-17 | M4 | lint/format/build pass; test:local pass except pre-existing python_support failure; API tests pending |
+| 2026-11-17 | M5 | User asked to open the PR without a local API run; clean branch `fix/1566-empty-environment-variables` created from upstream/master |
