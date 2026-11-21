@@ -3,7 +3,7 @@
 **Task ID:** github-1568  
 **Task Name:** Never upload .env, git-ignore it by default  
 **GitHub Issue:** #1568  
-**Current Status:** Implemented and tested — PR not opened yet
+**Current Status:** PR open — https://github.com/apify/apify-cli/pull/1617
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -49,9 +49,9 @@
 - [x] Verify acceptance criteria
 - [x] Update implementation documentation
 - [x] Record final changes
-- [ ] Clean PR branch + upstream PR (waiting for your go-ahead)
+- [x] Clean PR branch `fix/1568-never-upload-dotenv` + upstream PR #1617
 
-**Status:** In Progress
+**Status:** Complete (PR in review)
 
 ## Progress Summary
 
@@ -61,7 +61,7 @@
 | Requirements & Technical Design | Complete |
 | Development | Complete |
 | Testing | Complete |
-| Review & Completion | In Progress (PR pending) |
+| Review & Completion | PR #1617 in review |
 
 ## Test results (2026-11-21)
 
@@ -88,3 +88,4 @@
 | 2026-11-21 | Initialization | Fork master synced with upstream (28 commits); branch and task folder created |
 | 2026-11-21 | M1 / M2 | Analysis and plan done. Deviation from the issue: final filter instead of `ACTOR_FILES_HARDCODED_IGNORE` |
 | 2026-11-21 | M3 / M4 | Plan approved; implemented; tests added and passing |
+| 2026-11-21 | M5 | Clean PR branch from upstream/master (diff: 3 files, no CLAUDE.md/tasks); PR #1617 opened |
