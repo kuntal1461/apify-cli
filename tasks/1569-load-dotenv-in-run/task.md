@@ -4,7 +4,7 @@
 **Task ID:** github-1569  
 **Task Name:** Load .env in apify run  
 **Branch:** dev/1569-load-dotenv-in-run  
-**Status:** Plan ready — waiting for approval  
+**Status:** PR open — https://github.com/apify/apify-cli/pull/1618  
 **Created:** 2026-11-21
 
 ## Summary
