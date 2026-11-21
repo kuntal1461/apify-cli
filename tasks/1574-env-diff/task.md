@@ -4,7 +4,7 @@
 **Task ID:** github-1574  
 **Task Name:** apify env diff  
 **Branch:** dev/1574-env-diff (internal: fork master + PR branches of #1569 and #1570 merged in)  
-**Status:** Plan ready — waiting for approval  
+**Status:** Draft PR open — https://github.com/apify/apify-cli/pull/1620  
 **Created:** 2026-11-21
 
 ## Summary
