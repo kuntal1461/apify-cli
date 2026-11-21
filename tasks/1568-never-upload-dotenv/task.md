@@ -4,7 +4,7 @@
 **Task ID:** github-1568  
 **Task Name:** Never upload .env, git-ignore it by default  
 **Branch:** dev/1568-never-upload-dotenv  
-**Status:** Plan ready — waiting for approval  
+**Status:** Implemented and tested — PR not opened yet  
 **Created:** 2026-11-21
 
 ## Summary

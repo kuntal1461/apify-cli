@@ -3,7 +3,7 @@
 **Task ID:** github-1568  
 **Task Name:** Never upload .env, git-ignore it by default  
 **GitHub Issue:** #1568  
-**Current Status:** Plan ready — waiting for approval
+**Current Status:** Implemented and tested — PR not opened yet
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -23,49 +23,63 @@
 - [x] Document edge cases
 - [x] Complete technical documentation
 
-**Status:** Complete (pending approval)
+**Status:** Complete (approved 2026-11-21)
 
 ## Milestone 3: Development
 
-- [ ] Implement required changes
-- [ ] Follow existing coding standards
-- [ ] Review code for quality issues
+- [x] Implement required changes
+- [x] Follow existing coding standards
+- [x] Review code for quality issues
 
-**Status:** Not Started
+**Status:** Complete
 
 ## Milestone 4: Testing
 
-- [ ] Perform unit testing
-- [ ] Verify positive scenarios
-- [ ] Verify negative scenarios
-- [ ] Perform regression testing
-- [ ] Resolve identified defects
+- [x] Perform unit testing
+- [x] Verify positive scenarios
+- [x] Verify negative scenarios
+- [x] Perform regression testing
+- [x] Resolve identified defects
 
-**Status:** Not Started
+**Status:** Complete
 
 ## Milestone 5: Review & Completion
 
-- [ ] Complete code review
-- [ ] Verify acceptance criteria
-- [ ] Update implementation documentation
-- [ ] Record final changes
-- [ ] Mark task as completed
+- [x] Complete code review (self-review)
+- [x] Verify acceptance criteria
+- [x] Update implementation documentation
+- [x] Record final changes
+- [ ] Clean PR branch + upstream PR (waiting for your go-ahead)
 
-**Status:** Not Started
+**Status:** In Progress
 
 ## Progress Summary
 
 | Milestone | Status |
 |---|---|
 | Existing Implementation Analysis | Complete |
-| Requirements & Technical Design | Complete (pending approval) |
-| Development | Not Started |
-| Testing | Not Started |
-| Review & Completion | Not Started |
+| Requirements & Technical Design | Complete |
+| Development | Complete |
+| Testing | Complete |
+| Review & Completion | In Progress (PR pending) |
+
+## Test results (2026-11-21)
+
+- New tests: `test/local/lib/utils-dotenv.test.ts` (13 tests) and 2 new tests in `test/local/commands/init.test.ts`. The 7 tests that cover the new behaviour failed before the fix and pass after it.
+- `pnpm run lint`: 0 errors, 28 warnings — the same count as before the change (all existing "unused eslint-disable" warnings).
+- `pnpm run format`, `pnpm run build`: pass.
+- `pnpm run test:local`: 1314 passed, 1 failed, 7 skipped. The one failure (`test/local/__fixtures__/python_support.test.ts`) also fails **without** this change, so it's an existing local Python environment issue, not a regression.
+- `pnpm run test:api`: not run. The change doesn't touch any API call.
+
+## Deviations from the plan
+
+- No `create.test.ts` assertion: create needs a template download. `init.test.ts` covers the shared `setLocalEnv` path instead.
+- Added the "no duplicate `.env` line" test (B3) to `init.test.ts`.
+- Updated the `getActorLocalFilePaths` docstring, which said all dot files are included.
 
 ## Blockers
 
-- Waiting for plan approval.
+- None.
 
 ## Change Log
 
@@ -73,3 +87,4 @@
 |---|---|---|
 | 2026-11-21 | Initialization | Fork master synced with upstream (28 commits); branch and task folder created |
 | 2026-11-21 | M1 / M2 | Analysis and plan done. Deviation from the issue: final filter instead of `ACTOR_FILES_HARDCODED_IGNORE` |
+| 2026-11-21 | M3 / M4 | Plan approved; implemented; tests added and passing |
