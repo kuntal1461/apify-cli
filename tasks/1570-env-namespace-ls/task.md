@@ -4,7 +4,7 @@
 **Task ID:** github-1570  
 **Task Name:** apify env namespace + env ls  
 **Branch:** dev/1570-env-namespace-ls  
-**Status:** Plan ready — waiting for approval  
+**Status:** PR open — https://github.com/apify/apify-cli/pull/1619  
 **Created:** 2026-11-21
 
 ## Summary

@@ -3,7 +3,7 @@
 **Task ID:** github-1570  
 **Task Name:** apify env namespace + env ls  
 **GitHub Issue:** #1570  
-**Current Status:** Implemented and tested — PR being opened
+**Current Status:** PR open — https://github.com/apify/apify-cli/pull/1619
 
 ## Milestone 1: Existing Implementation Analysis
 
@@ -45,13 +45,13 @@
 
 ## Milestone 5: Review & Completion
 
-- [ ] Complete code review
-- [ ] Verify acceptance criteria
-- [ ] Update implementation documentation
-- [ ] Record final changes
-- [ ] Mark task as completed
+- [x] Complete code review (self-review)
+- [x] Verify acceptance criteria
+- [x] Update implementation documentation
+- [x] Record final changes
+- [x] Clean PR branch `feat/1570-env-namespace-ls` + upstream PR #1619
 
-**Status:** Not Started
+**Status:** Complete (PR in review)
 
 ## Progress Summary
 
@@ -61,7 +61,7 @@
 | Requirements & Technical Design | Complete |
 | Development | Complete |
 | Testing | Complete |
-| Review & Completion | Not Started |
+| Review & Completion | PR #1619 in review |
 
 ## Test results (2026-11-21)
 
@@ -88,3 +88,4 @@
 | 2026-11-21 | Initialization | Fork master already in sync; branch and task folder created; no upstream work on #1570 found |
 | 2026-11-21 | M1 / M2 | Analysis and plan done |
 | 2026-11-21 | M3 / M4 | Plan approved; implemented `apify env`, `apify env ls`, `resolveEnvTarget`; docs section; tests pass |
+| 2026-11-21 | M5 | Clean PR branch from upstream/master (9 files, no CLAUDE.md/tasks); env-ls and actors-info tests pass there; PR #1619 opened |
